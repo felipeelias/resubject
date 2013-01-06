@@ -2,14 +2,15 @@ module Resubject
   module Helpers
     def self.included(base)
       base.send(:helper_method, :present)
-      base.send(:private, :present_object)
     end
 
-    def present(object, *presenter_classes)
+    def present(object, *presenters)
       presenter = if object.respond_to?(:each)
-        object.map { |o| present_object(o, presenter_classes) }
+        object.map do |o|
+          Builder.present_one(o, view_context, *presenters)
+        end
       else
-        present_object(object, presenter_classes)
+        Builder.present_one(object, view_context, *presenters)
       end
 
       presenter.tap do |p|
@@ -17,11 +18,6 @@ module Resubject
           yield p
         end
       end
-    end
-
-    def present_object(object, presenter_classes)
-      presenter_classes = ["#{object.class}Presenter".constantize] if presenter_classes.empty?
-      presenter_classes.inject(object) { |o, klass| klass.new(o, view_context) }
     end
   end
 end
