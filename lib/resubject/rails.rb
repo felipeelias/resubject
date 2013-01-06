@@ -20,7 +20,7 @@ module Resubject
     alias_method :l, :localize
 
     def routes
-      Rails.application.routes.url_helpers
+      ::Rails.application.routes.url_helpers
     end
 
     alias_method :r, :routes
