@@ -1,5 +1,8 @@
 module Resubject
   module Builder
+    class InvalidPresenterArgument < StandardError #:nodoc:
+    end
+
     # Presents a object or a collection of objects
     #
     # Examples:
@@ -36,6 +39,11 @@ module Resubject
     #
     def self.present_one(object, template, *presenters)
       presenters = [Naming.presenter_for(object)] unless presenters.any?
+
+      unless presenters.all? { |p| p.is_a?(Class) && p.ancestors.include?(Resubject::Presenter) }
+        raise InvalidPresenterArgument.new("Expected a presenter in #{presenters.inspect}")
+      end
+
       presenters.inject(object) do |presented, klass|
         klass.new(presented, template)
       end

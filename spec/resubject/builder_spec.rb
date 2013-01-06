@@ -25,6 +25,12 @@ describe Resubject::Builder do
       presenters = [OtherBoxPresenter, OtherBoxPresenter]
       presented  = Resubject::Builder.present_one Box.new, template, *presenters
     end
+
+    it 'raises an error if custom presenter is not a presenter' do
+      expect do
+        Resubject::Builder.present_one Box.new, template, *[nil, Class.new]
+      end.to raise_error(Resubject::Builder::InvalidPresenterArgument)
+    end
   end
 
   describe '.present_all' do
