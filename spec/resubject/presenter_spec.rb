@@ -34,4 +34,30 @@ describe Resubject::Presenter do
       expect(presented).to be_a BoxPresenter
     end
   end
+
+  describe '.presents' do
+    let :presenter do
+      Class.new(Resubject::Presenter) do
+        presents :item
+        presents :other_item, ItemPresenter
+      end
+    end
+
+    before do
+      stub_const 'Item', Class.new
+      stub_const 'ItemPresenter', Class.new(Resubject::Presenter)
+    end
+
+    it 'generates a method preseting the attribute' do
+      box = stub :box, :item => Item.new
+
+      expect(presenter.new(box).item).to be_a ItemPresenter
+    end
+
+    it 'presents the attributes with custom presenter' do
+      box = stub :box, :other_item => stub
+
+      expect(presenter.new(box).other_item).to be_a ItemPresenter
+    end
+  end
 end

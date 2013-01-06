@@ -35,6 +35,25 @@ module Resubject
       Builder.present objects, context, *presenters
     end
 
+    # Generates a instance method with the attribute presented
+    #
+    # Example:
+    #
+    #    class BoxPresenter < Resubject::Presenter
+    #      presents :name
+    #      # or
+    #      # presents :name, CustomPresenter
+    #    end
+    #
+    #    BoxPresenter.new(box).name
+    #    => <NamePresenter>
+    #
+    def self.presents(attribute, *presenters)
+      define_method attribute do
+        present to_model.send(attribute), *presenters
+      end
+    end
+
   private
 
     def self.inject_presenter_for(*options)
