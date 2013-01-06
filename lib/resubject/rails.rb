@@ -1,7 +1,10 @@
 require 'resubject/rails/engine'
+require 'resubject/rails/extensions'
 
 module Resubject
   class Presenter
+    extend Resubject::Rails::Extensions
+
     private
 
     def translate(*args, &block)
