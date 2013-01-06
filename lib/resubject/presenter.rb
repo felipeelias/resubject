@@ -2,11 +2,11 @@ require 'delegate'
 
 module Resubject
   class Presenter < SimpleDelegator
-    attr_reader :template
-    alias :h :template
+    attr_reader  :context
+    alias_method :template, :context
 
-    def initialize(model, template)
-      @template = template
+    def initialize(model, context = nil)
+      @context = context
       super(model)
     end
 
@@ -30,7 +30,7 @@ module Resubject
         end
 
         define_method "present_#{resource}" do |object|
-          send(presenter_name).new(object, @template)
+          send(presenter_name).new(object, @context)
         end
       end
     end
