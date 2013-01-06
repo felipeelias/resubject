@@ -1,7 +1,8 @@
-require 'rails/all'
 require 'spec_helper'
+require 'rails/all'
+require 'resubject/rails'
 
-describe Resubject::Rails::Extensions do
+describe Resubject::Presenter, 'extensions' do
   let(:model) { mock :model }
 
   let(:presenter) do
