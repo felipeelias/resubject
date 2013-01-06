@@ -10,12 +10,18 @@ module Resubject
       super(model)
     end
 
-    def to_model
-      __getobj__
-    end
+    alias_method :to_model, :__getobj__
 
-    def self.all(collection, template)
-      collection.map { |object| new(object, template) }
+    # Builds a collection of presenters given an array of objects
+    #
+    # Example:
+    #
+    #   boxes = [box1, box2, box3]
+    #   BoxPresenter.all boxes
+    #   # => [<BoxPresenter>, <BoxPresenter>, <BoxPresenter>]
+    #
+    def self.all(collection, context = nil)
+      collection.map { |c| new(c, context) }
     end
 
   private
