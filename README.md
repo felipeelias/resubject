@@ -17,6 +17,10 @@ And then execute:
 
     $ bundle
 
+## Documentation
+
+Checkout the documentation in [rdoc.info/resubject](http://rdoc.info/github/felipeelias/resubject/master/frames)
+
 ## Usage
 
 Resubject works on top of `SimpleDelegator` which simply delegates every method call to the delegated object. Example:
