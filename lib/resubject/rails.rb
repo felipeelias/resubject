@@ -1,11 +1,31 @@
-require 'resubject/rails/helpers'
+require 'resubject/rails/engine'
 
 module Resubject
-  class Engine < ::Rails::Engine
-    initializer "resubject.helpers" do
-      ActiveSupport.on_load(:action_controller) do
-        include Resubject::Helpers
-      end
+  class Presenter
+    private
+
+    def translate(*args, &block)
+      context.t(*args, &block)
     end
+
+    alias_method :t, :translate
+
+    def localize(*args, &block)
+      context.l(*args, &block)
+    end
+
+    alias_method :l, :localize
+
+    def routes
+      Rails.application.routes.url_helpers
+    end
+
+    alias_method :r, :routes
+
+    def helpers
+      context
+    end
+
+    alias_method :h, :helpers
   end
 end
