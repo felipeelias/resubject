@@ -1,6 +1,6 @@
 module Resubject
   module Helpers
-    def self.included(base)
+    def self.included(base) #:nodoc:
       base.send(:helper_method, :present)
     end
 

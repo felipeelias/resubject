@@ -1,5 +1,5 @@
 module Resubject
-  module Rails
+  module Rails #:nodoc:
     module Extensions
       def currency(attribute, options = {})
         define_method attribute do
