@@ -26,4 +26,34 @@ describe Resubject::Builder do
       presented  = Resubject::Builder.present_one Box.new, template, *presenters
     end
   end
+
+  describe '.present_all' do
+    it 'presents multiple objects' do
+      box = Box.new
+      presented = Resubject::Builder.present_all [box, box], template
+
+      expect(presented.map(&:class)).to eq [BoxPresenter, BoxPresenter]
+    end
+
+    it 'presents multiple objects with custom presenters' do
+      box = Box.new
+      presented = Resubject::Builder.present_all [box, box], template, OtherBoxPresenter
+
+      expect(presented.map(&:class)).to eq [OtherBoxPresenter, OtherBoxPresenter]
+    end
+  end
+
+  describe '.present' do
+    it 'presents single object' do
+      presented = Resubject::Builder.present Box.new, template
+      expect(presented).to be_a BoxPresenter
+    end
+
+    it 'presents multiple objects' do
+      box = Box.new
+      presented = Resubject::Builder.present [box, box], template
+
+      expect(presented.map(&:class)).to eq [BoxPresenter, BoxPresenter]
+    end
+  end
 end

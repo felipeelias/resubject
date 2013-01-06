@@ -4,16 +4,10 @@ module Resubject
       base.send(:helper_method, :present)
     end
 
-    def present(object, *presenters)
-      presenter = if object.respond_to?(:each)
-        object.map do |o|
-          Builder.present_one(o, view_context, *presenters)
-        end
-      else
-        Builder.present_one(object, view_context, *presenters)
-      end
+    def present(objects, *presenters)
+      presenters = Builder.present(objects, view_context, *presenters)
 
-      presenter.tap do |p|
+      presenters.tap do |p|
         if block_given?
           yield p
         end
