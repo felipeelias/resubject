@@ -37,7 +37,7 @@ Then use the delegator:
 ```ruby
 box = Box.new('Awkward Package', ['platypus', 'sloth', 'anteater'])
 
-presentable = BoxPresenter.new(box, nil)
+presentable = BoxPresenter.new(box)
 presentable.contents
 # => platypus, sloth, anteater
 ```
@@ -83,6 +83,56 @@ Or if you prefer, you can use the `#present` method directly into your views
 ```ruby
 <%= present(@box).contents %>
 ```
+
+## Helpers
+
+You can define presentable attributes:
+
+```ruby
+class PostPresenter < Resubject::Presenter
+  presents :title
+  presents :comments # or => presents :comments, CommentPresenter
+end
+```
+
+Then the attributes will return an instance of those presenters:
+
+```ruby
+post.title
+# => <TitlePresenter>
+
+post.comments
+# => [<CommentPresenter>, <CommentPresenter>, <CommentPresenter>]
+```
+
+Or if you wish, you can use the `present` method inside your class
+
+```ruby
+class PostPresenter < Resubject::Presenter
+  def comments
+    present(to_model.comments, SomePresenter)
+  end
+end
+```
+
+### Helpers on Rails
+
+`Resubject` can generate some rails helpers for your attributes:
+
+```ruby
+class ProductPresenter < Resubject::Presenter
+  currency :price, precision: 2
+end
+```
+
+Will generate:
+
+```ruby
+product.price
+# => $10.00
+```
+
+Check out [the extensions file](https://github.com/felipeelias/resubject/blob/master/lib/resubject/rails/extensions.rb) for other attribute helpers.
 
 ## Maintainers
 
