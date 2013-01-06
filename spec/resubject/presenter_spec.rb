@@ -24,4 +24,14 @@ describe Resubject::Presenter do
                                             Resubject::Presenter]
     end
   end
+
+  describe :present do
+    it 'creates a presenter' do
+      stub_const 'Box', Class.new
+      stub_const 'BoxPresenter', Class.new(Resubject::Presenter)
+
+      presented = subject.present Box.new
+      expect(presented).to be_a BoxPresenter
+    end
+  end
 end

@@ -24,6 +24,17 @@ module Resubject
       collection.map { |c| new(c, context) }
     end
 
+    # Creates a presenter from object or collection of objects
+    # See Builder.present for more details
+    # Example:
+    #
+    #    present box
+    #    => <BoxPresenter>
+    #
+    def present(objects, *presenters)
+      Builder.present objects, context, *presenters
+    end
+
   private
 
     def self.inject_presenter_for(*options)
