@@ -6,9 +6,10 @@ module Resubject
     #
     # @example
     #
-    #   Naming.presenter_for :post     # => PostPresenter
-    #   Naming.presenter_for "post"    # => PostPresenter
-    #   Naming.presenter_for Post.new  # => PostPresenter
+    #   Naming.presenter_for :post         # => PostPresenter
+    #   Naming.presenter_for "post"        # => PostPresenter
+    #   Naming.presenter_for Post.new      # => PostPresenter
+    #   Naming.presenter_for Ns::Post.new  # => Ns::PostPresenter
     #
     # @param [Object, String, Symbol] presentable the reference object
     # @return [Presenter] the related presenter class based on the object
@@ -24,7 +25,8 @@ module Resubject
 
       presenter = "#{klass.camelize}Presenter"
 
-      Object.const_get presenter
+      # Gets each constant in the namespace
+      presenter.split('::').inject(Object) { |ns, cons| ns.const_get(cons) }
     end
   end
 end

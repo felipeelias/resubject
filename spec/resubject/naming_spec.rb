@@ -23,4 +23,13 @@ describe Resubject::Naming do
 
     expect(presenter).to eq BoxPresenter
   end
+
+  it 'gets namespaced constants' do
+    stub_const 'Namespaced', Class.new
+    stub_const 'Namespaced::BoxPresenter', Class.new
+
+    presenter = Resubject::Naming.presenter_for "Namespaced::Box"
+
+    expect(presenter).to eq Namespaced::BoxPresenter
+  end
 end
