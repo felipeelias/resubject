@@ -10,7 +10,7 @@ Uber simple presenters using Ruby's SimpleDelegator.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'resubject', '~> 0.0.3'
+gem 'resubject', '~> 0.0.4'
 ```
 
 And then execute:
