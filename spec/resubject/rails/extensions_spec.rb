@@ -10,6 +10,7 @@ describe Resubject::Presenter, 'extensions' do
       currency :price
       time_ago :posted_at
       percentage :rating, precision: 0
+      date_format :created_at, :short
     end
   end
 
@@ -40,6 +41,18 @@ describe Resubject::Presenter, 'extensions' do
     it 'returns formatted percentage' do
       model.stub(:rating).and_return(95.123)
       expect(subject.rating).to eq "95%"
+    end
+  end
+
+  describe '.date_format' do
+    it 'returns formatted date' do
+      model.stub(:created_at).and_return(Time.at(1358082653))
+      expect(subject.created_at).to eq "13 Jan 14:10"
+    end
+
+    it 'returns nothing if value is nil' do
+      model.stub(:created_at).and_return(nil)
+      expect(subject.created_at).to eq nil
     end
   end
 end

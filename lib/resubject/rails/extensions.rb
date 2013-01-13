@@ -77,6 +77,39 @@ module Resubject
           template.number_to_percentage to_model.send(attribute), options
         end
       end
+
+      # Formats a date/time attribtue using `to_s` helper from ActiveSupport::TimeWithZone
+      #
+      # @example
+      #
+      #   class PostPresenter < Resubject::Presenter
+      #     date_format :created_at, :short
+      #   end
+      #
+      #   # Will generate a `created_at` method in the presenter
+      #
+      #   post.created_at
+      #   # => '13 Jan 14:10'
+      #
+      # @example Other accepted formats
+      #
+      #   :db           # => 2008-12-25 14:35:05
+      #   :number       # => 20081225143505
+      #   :time         # => 14:35
+      #   :short        # => 25 Dec 14:35
+      #   :long         # => December 25, 2008 14:35
+      #   :long_ordinal # => December 25th, 2008 14:35
+      #   :rfc822       # => Thu, 25 Dec 2008 14:35:05 +0000
+      #
+      # @param [Symbol] attribute the name of the presented attribute to be generated
+      # @param [Symbol] format the format defined in Time::DATE_FORMATS
+      # @see http://apidock.com/rails/ActiveSupport/TimeWithZone/to_s
+      def date_format(attribute, format = :default)
+        define_method attribute do
+          return if to_model.send(attribute).nil?
+          to_model.send(attribute).to_s(format)
+        end
+      end
     end
   end
 end
