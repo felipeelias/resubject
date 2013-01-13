@@ -21,9 +21,56 @@ And then execute:
 
 Checkout the documentation in [rdoc.info/resubject](http://rdoc.info/github/felipeelias/resubject/master/frames)
 
+## Introduction
+
+Resubject uses Ruby's [SimpleDelegator](http://apidock.com/ruby/SimpleDelegator) class to create its presenters.
+
+SimpleDelegator is a concrete implemenation of the Delegator class. Basically, it delegates any method calls to the object passed into the constructor:
+
+```ruby
+require 'delegate'
+
+array = SimpleDelegator.new([1, 2, 3])
+
+array.count # => 3
+array.map   # => #<Enumerator: ...>
+```
+
+It doesn't override the class name, but you still can access the original object.
+
+```ruby
+array.class
+# => SimpleDelegator
+array.__getobj__.class
+# => Array
+```
+
+This means you can create a class that inherits from SimpleDelegator and customize its behaviour:
+
+```ruby
+class ForeverZeroArray < SimpleDelegator
+  def omg!
+    "OMG!"
+  end
+
+  def count
+    0
+  end
+end
+```
+
+You can define new methods or override existing ones:
+
+```ruby
+ForeverZeroArray.new([1,2,3]).count
+# => 0
+ForeverZeroArray.new([1,2,3]).omg!
+# => OMG!
+```
+
 ## Usage
 
-Resubject works on top of `SimpleDelegator` which simply delegates every method call to the delegated object. Example:
+Using the `Resubject::Presenter` class, you can create Presenters from it. Example:
 
 ```ruby
 class Box < Struct.new(:name, :items)
