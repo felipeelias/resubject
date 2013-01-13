@@ -1,3 +1,10 @@
+# 0.1.0
+
+- enhancements
+  - Add time_ago helper
+  - Add percentage helper
+  - Add date_format helper
+
 # 0.0.4
 
 - bugfixes
