@@ -136,7 +136,18 @@ product.price
 # => $10.00
 ```
 
-Check out [the extensions file](https://github.com/felipeelias/resubject/blob/master/lib/resubject/rails/extensions.rb) for other attribute helpers.
+#### Available helpers
+
+```text
+Presenter           Maps to                     Class/Module
+
+currency            number_to_currency          ActionView::Helpers::NumberHelper
+percentage          number_to_percentage        ActionView::Helpers::NumberHelper
+time_ago            time_ago_in_words           ActionView::Helpers::DateHelper
+date_format         to_s                        ActiveSupport::TimeWithZone
+```
+
+More helpers will be added. Feel free to contribute with yours! Also, Check out [the extensions file](https://github.com/felipeelias/resubject/blob/master/lib/resubject/rails/extensions.rb).
 
 ## Maintainers
 
