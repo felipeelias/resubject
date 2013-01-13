@@ -28,6 +28,28 @@ module Resubject
           template.number_to_currency to_model.send(attribute), options
         end
       end
+
+      # Generates an attribute using `time_ago_in_words` helper from rails
+      #
+      # @example
+      #
+      #   class ProductPresenter < Resubject::Presenter
+      #     time_ago :posted_at
+      #   end
+      #
+      #   # Will redefine the `posted_at` attribute using `time_ago_in_words`
+      #
+      #   product.posted_at
+      #   # => 'about 1 hour'
+      #
+      # @param [Symbol] attribute the name of the attribute to be generated
+      # @see http://apidock.com/rails/ActionView/Helpers/DateHelper/time_ago_in_words
+      def time_ago(attribute, include_seconds = false)
+        define_method attribute do
+          return if to_model.send(attribute).nil?
+          template.time_ago_in_words to_model.send(attribute), include_seconds
+        end
+      end
     end
   end
 end
