@@ -50,6 +50,33 @@ module Resubject
           template.time_ago_in_words to_model.send(attribute), include_seconds
         end
       end
+
+      # Generates an attribute using `number_to_percentage` helper from rails
+      #
+      # @example
+      #
+      #   class ProductPresenter < Resubject::Presenter
+      #     percentage :rating
+      #   end
+      #
+      #   # Will create a `rating` attribute using `number_to_percentage`
+      #
+      #   product.rating
+      #   # => '95.000%'
+      #
+      # @example Also, any number_to_percentage options are accepted
+      #
+      #   currency :rating, precision: 0   # => '95%'
+      #   currency :rating, locale: :fr    # => '1 000,000%'
+      #
+      # @param [Symbol] attribute the name of the presented attribute to be generated
+      # @param [Hash] options the options for `number_to_percentage` method
+      # @see http://apidock.com/rails/ActionView/Helpers/NumberHelper/number_to_percentage
+      def percentage(attribute, options = {})
+        define_method attribute do
+          template.number_to_percentage to_model.send(attribute), options
+        end
+      end
     end
   end
 end

@@ -9,6 +9,7 @@ describe Resubject::Presenter, 'extensions' do
     Class.new(Resubject::Presenter) do
       currency :price
       time_ago :posted_at
+      percentage :rating, precision: 0
     end
   end
 
@@ -32,6 +33,13 @@ describe Resubject::Presenter, 'extensions' do
     it 'returns nothing if value is nil' do
       model.stub(:posted_at).and_return(nil)
       expect(subject.posted_at).to eq nil
+    end
+  end
+
+  describe '.percentage' do
+    it 'returns formatted percentage' do
+      model.stub(:rating).and_return(95.123)
+      expect(subject.rating).to eq "95%"
     end
   end
 end
