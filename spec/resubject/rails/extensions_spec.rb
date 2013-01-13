@@ -46,8 +46,8 @@ describe Resubject::Presenter, 'extensions' do
 
   describe '.date_format' do
     it 'returns formatted date' do
-      model.stub(:created_at).and_return(Time.at(1358082653))
-      expect(subject.created_at).to eq "13 Jan 14:10"
+      model.stub(:created_at).and_return(Time.at(1358082653).utc)
+      expect(subject.created_at).to eq "13 Jan 13:10"
     end
 
     it 'returns nothing if value is nil' do
