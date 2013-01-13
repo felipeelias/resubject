@@ -113,7 +113,7 @@ class BoxesController < ActionController::Base
 end
 ```
 
-The `#present` mehtod will automatically identify the presenter class by the object's class name. If you want to customize the class:
+The `#present` method will automatically identify the presenter class by the object's class name. If you want to customize the class:
 
 ```ruby
 def index
