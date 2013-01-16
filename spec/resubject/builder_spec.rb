@@ -10,6 +10,11 @@ describe Resubject::Builder do
   end
 
   describe '.present_one' do
+    it 'does not attempt to present nil' do
+      presented = Resubject::Builder.present_one nil, template
+      expect(presented).to be_nil
+    end
+
     it 'presents the object with related class' do
       presented = Resubject::Builder.present_one Box.new, template
       expect(presented).to be_a BoxPresenter

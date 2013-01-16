@@ -56,9 +56,16 @@ module Resubject
     #   Builder.present_one box, context, CustomPresenter             # => <CustomPresenter>
     #   Builder.present_one box, context, OnePresenter, TwoPresenter  # => <TwoPresenter<OnePresenter>>
     #
+    # @example Skips nil classes
+    #
+    #   Builder.present_one nil
+    #   # => nil
+    #
     # @see .present
     #
     def self.present_one(object, template, *presenters)
+      return unless object
+
       presenters = [Naming.presenter_for(object)] unless presenters.any?
 
       unless presenters.all? { |p| p.is_a?(Class) && p.ancestors.include?(Resubject::Presenter) }

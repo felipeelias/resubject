@@ -70,6 +70,12 @@ module Resubject
     #
     #   BoxPresenter.new(box).name   # => <NamePresenter>
     #
+    # @example When the parent method is nil, it returns nil
+    #
+    #   box = BoxPresenter.new Box.new(name: nil)
+    #   box.name
+    #   # => nil
+    #
     def self.presents(attribute, *presenters)
       define_method attribute do
         present to_model.send(attribute), *presenters

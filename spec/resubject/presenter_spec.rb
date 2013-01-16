@@ -54,6 +54,12 @@ describe Resubject::Presenter do
       expect(presenter.new(box).item).to be_a ItemPresenter
     end
 
+    it 'does not attempt to find a class from nil' do
+      box = stub :box, :item => nil
+
+      expect(presenter.new(box).item).to be_nil
+    end
+
     it 'presents the attributes with custom presenter' do
       box = stub :box, :other_item => stub
 
