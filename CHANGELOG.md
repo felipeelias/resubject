@@ -1,3 +1,10 @@
+# 0.1.1
+
+- bugfixes
+  - [#2] presents' implicit presenter class blows up with nil association
+- enhancements
+  - Calls ActiveSupport.run_load_hooks when gem is loaded
+
 # 0.1.0
 
 - enhancements
