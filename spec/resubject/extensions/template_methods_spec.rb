@@ -1,14 +1,11 @@
 require 'spec_helper'
 require 'action_view'
-require 'resubject/rails/extensions'
 
-describe Resubject::Presenter, 'extensions' do
+describe Resubject::Presenter, 'template methods' do
   let(:model) { mock :model }
 
   let(:presenter) do
     Class.new(Resubject::Presenter) do
-      extend Resubject::Rails::Extensions
-
       currency :price
       time_ago :posted_at
       percentage :rating, precision: 0

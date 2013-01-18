@@ -2,6 +2,8 @@ require 'delegate'
 
 module Resubject
   class Presenter < SimpleDelegator
+    extend Resubject::Extensions::TemplateMethods
+
     # the HTML helpers context
     attr_reader  :context
     alias_method :template, :context
@@ -81,5 +83,25 @@ module Resubject
         present to_model.send(attribute), *presenters
       end
     end
+
+  private
+
+    def translate(*args, &block)
+      context.t(*args, &block)
+    end
+
+    alias_method :t, :translate
+
+    def localize(*args, &block)
+      context.l(*args, &block)
+    end
+
+    alias_method :l, :localize
+
+    def helpers
+      context
+    end
+
+    alias_method :h, :helpers
   end
 end

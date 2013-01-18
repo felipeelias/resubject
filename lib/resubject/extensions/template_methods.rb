@@ -1,7 +1,9 @@
+require 'active_support/time'
+
 module Resubject
-  module Rails
+  module Extensions
     # All Rails extensions
-    module Extensions
+    module TemplateMethods
       # Generates an attribute using `number_to_currency` helper from rails
       #
       # @example
