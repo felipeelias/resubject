@@ -1,3 +1,8 @@
+# 0.2.0
+
+- enhancements
+  - Introduce RSpec helpers
+
 # 0.1.1
 
 - bugfixes
