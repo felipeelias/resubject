@@ -17,6 +17,10 @@ And then execute:
 
     $ bundle
 
+## Ruby/Rails versions
+
+This gem is compatible with Ruby 1.9 and 2.0 and Rails 3 and 4.
+
 ## Documentation
 
 Checkout the documentation in [rdoc.info/resubject](http://rdoc.info/github/felipeelias/resubject/master/frames)
