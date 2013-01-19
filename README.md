@@ -194,7 +194,21 @@ time_ago            time_ago_in_words           ActionView::Helpers::DateHelper
 date_format         to_s                        ActiveSupport::TimeWithZone
 ```
 
-More helpers will be added. Feel free to contribute with yours! Also, Check out [the extensions file](https://github.com/felipeelias/resubject/blob/master/lib/resubject/rails/extensions.rb).
+More helpers will be added. Feel free to contribute with yours! Also, Check out [the extensions file](https://github.com/felipeelias/resubject/blob/master/lib/resubject/extensions/template_methods.rb).
+
+### Helpers without rails
+
+If you'd like to use the generated helpers but you're not using Rails, you can either use `ActionView` or create your own template handler:
+
+```
+require 'action_view'
+
+post = PostPresenter.new(post, ActionView::Base.new)
+# Or
+post = PostPresenter.new(post, MyTemplateHandler.new)
+```
+
+If you want to use your own template handler and still use Resubject helpers, you may want to define the same `ActionView` helpers in your handler (or only the ones you will actually use).
 
 ## Testing
 
