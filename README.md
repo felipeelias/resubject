@@ -196,6 +196,30 @@ date_format         to_s                        ActiveSupport::TimeWithZone
 
 More helpers will be added. Feel free to contribute with yours! Also, Check out [the extensions file](https://github.com/felipeelias/resubject/blob/master/lib/resubject/rails/extensions.rb).
 
+## Testing
+
+Resubject introduce a new context for RSpec that helps testing your presenters:
+
+```ruby
+# spec/presenters/my_presenter_spec.rb
+# require 'action_view' # require this first if you want to test action view helpers
+require 'resubject/rspec'
+require 'presenters/my_presenter'
+
+describe UserPresenter do
+  let(:object) { mock :user }
+
+  it 'has full name' do
+    object.stub(first: 'User', last: 'Name')
+    expect(subject.name).to eq 'User Name'
+  end
+end
+```
+
+By placing the file into `spec/presenters`, Resubject automatically includes the `subject` and `template` variables into your spec, so you don't need to define them on every spec.
+
+**NOTE:** Please note that the presenter is tested on isolation. It's not required but very recommended.
+
 ## Maintainers
 
 - Felipe Elias Philipp - [coderwall.com/felipeelias](http://coderwall.com/felipeelias)
