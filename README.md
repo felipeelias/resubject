@@ -204,7 +204,7 @@ More helpers will be added. Feel free to contribute with yours! Also, Check out 
 
 If you'd like to use the generated helpers but you're not using Rails, you can either use `ActionView` or create your own template handler:
 
-```
+```ruby
 require 'action_view'
 
 post = PostPresenter.new(post, ActionView::Base.new)
