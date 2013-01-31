@@ -33,7 +33,7 @@ module Resubject
     # @see .present_all
     #
     def self.present(objects, template, *presenters)
-      if objects.respond_to?(:each)
+      if objects.is_a? Enumerable
         Builder.present_all(objects, template, *presenters)
       else
         Builder.present_one(objects, template, *presenters)
