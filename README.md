@@ -29,7 +29,7 @@ Checkout the documentation in [rdoc.info/resubject](http://rdoc.info/github/feli
 
 Resubject uses Ruby's [SimpleDelegator](http://apidock.com/ruby/SimpleDelegator) class to create its presenters.
 
-SimpleDelegator is a concrete implemenation of the Delegator class. Basically, it delegates any method calls to the object passed into the constructor:
+SimpleDelegator is a concrete implementation of the Delegator class. Basically, it delegates any method calls to the object passed into the constructor:
 
 ```ruby
 require 'delegate'
@@ -216,7 +216,7 @@ If you want to use your own template handler and still use Resubject helpers, yo
 
 ## Testing
 
-Resubject introduce a new context for RSpec that helps testing your presenters:
+Resubject introduces a new context for RSpec that helps testing your presenters:
 
 ```ruby
 # spec/presenters/my_presenter_spec.rb
