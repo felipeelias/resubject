@@ -1,6 +1,6 @@
 ENV['rails'] ||= '3.2'
 
-source :rubygems
+source 'https://rubygems.org'
 
 rails_version = ENV['rails']
 
