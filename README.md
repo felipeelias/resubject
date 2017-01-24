@@ -1,7 +1,8 @@
 # Resubject
 
-[![Build Status](https://travis-ci.org/felipeelias/resubject.png?branch=master)](https://travis-ci.org/felipeelias/resubject)
-[![Gem Version](https://fury-badge.herokuapp.com/rb/resubject.png)](http://badge.fury.io/rb/resubject)
+[![Build Status](https://travis-ci.org/felipeelias/resubject.svg?branch=master)](https://travis-ci.org/felipeelias/resubject)
+[![Gem Version](https://badge.fury.io/rb/resubject.svg)](https://badge.fury.io/rb/resubject)
+[![Code Climate](https://codeclimate.com/github/felipeelias/resubject/badges/gpa.svg)](https://codeclimate.com/github/felipeelias/resubject)
 
 Uber simple presenters using Ruby's SimpleDelegator.
 
