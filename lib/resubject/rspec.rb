@@ -46,7 +46,13 @@ module Resubject
 end
 
 ::RSpec.configure do |c|
-  c.include Resubject::Rspec,
-            type: :presenter,
-            example_group: { file_path: %r(spec/presenters) }
+  if ::RSpec::Core::Version::STRING.split(".").first.to_i >= 3
+    c.include Resubject::Rspec,
+      type: :presenter,
+      file_path: %r(spec/presenters)
+  else
+    c.include Resubject::Rspec,
+      type: :presenter,
+      example_group: { file_path: %r(spec/presenters) }
+  end
 end
