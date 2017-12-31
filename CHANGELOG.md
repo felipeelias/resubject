@@ -1,3 +1,6 @@
+# 0.2.1
+- update yard and nokogiri due to security vulnerabilities (only on dev environment)
+
 # 0.2.0
 
 - enhancements
