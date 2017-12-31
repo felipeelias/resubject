@@ -7,6 +7,6 @@ gem 'actionpack', "~> #{rails_version}"
 
 gem 'redcarpet'
 gem 'rake', '< 11.0'
-gem 'nokogiri', '~> 1.6.8.1'
+gem 'nokogiri', '~> 1.8'
 # Specify your gem's dependencies in resubject.gemspec
 gemspec
