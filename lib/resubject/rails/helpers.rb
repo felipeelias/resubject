@@ -14,9 +14,7 @@ module Resubject
       presenters = Builder.present(objects, view_context, *presenters)
 
       presenters.tap do |p|
-        if block_given?
-          yield p
-        end
+        yield p if block_given?
       end
     end
   end

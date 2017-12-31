@@ -8,6 +8,6 @@ module Resubject
       ::Rails.application.routes.url_helpers
     end
 
-    alias_method :r, :routes
+    alias r routes
   end
 end

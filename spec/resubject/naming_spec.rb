@@ -28,7 +28,7 @@ describe Resubject::Naming do
     stub_const 'Namespaced', Class.new
     stub_const 'Namespaced::BoxPresenter', Class.new
 
-    presenter = Resubject::Naming.presenter_for "Namespaced::Box"
+    presenter = Resubject::Naming.presenter_for 'Namespaced::Box'
 
     expect(presenter).to eq Namespaced::BoxPresenter
   end

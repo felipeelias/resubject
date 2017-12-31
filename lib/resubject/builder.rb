@@ -69,7 +69,7 @@ module Resubject
       presenters = [Naming.presenter_for(object)] unless presenters.any?
 
       unless presenters.all? { |p| p.is_a?(Class) && p.ancestors.include?(Resubject::Presenter) }
-        raise InvalidPresenterArgument.new("Expected a presenter in #{presenters.inspect}")
+        raise InvalidPresenterArgument, "Expected a presenter in #{presenters.inspect}"
       end
 
       presenters.inject(object) do |presented, klass|

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Resubject::Presenter do
-  let(:object)   { mock :object }
+  let(:object) { mock :object }
 
   subject { Resubject::Presenter.new(object) }
 
@@ -49,19 +49,19 @@ describe Resubject::Presenter do
     end
 
     it 'generates a method preseting the attribute' do
-      box = stub :box, :item => Item.new
+      box = stub :box, item: Item.new
 
       expect(presenter.new(box).item).to be_a ItemPresenter
     end
 
     it 'does not attempt to find a class from nil' do
-      box = stub :box, :item => nil
+      box = stub :box, item: nil
 
       expect(presenter.new(box).item).to be_nil
     end
 
     it 'presents the attributes with custom presenter' do
-      box = stub :box, :other_item => stub
+      box = stub :box, other_item: stub
 
       expect(presenter.new(box).other_item).to be_a ItemPresenter
     end

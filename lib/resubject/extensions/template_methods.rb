@@ -47,7 +47,7 @@ module Resubject
       # @param [Symbol] attribute the name of the attribute to be generated
       # @see http://apidock.com/rails/ActionView/Helpers/DateHelper/time_ago_in_words
       def time_ago(attribute, include_seconds = false)
-        if Gem::Version.new(ActiveSupport::VERSION::STRING) < Gem::Version.new("4")
+        if Gem::Version.new(ActiveSupport::VERSION::STRING) < Gem::Version.new('4')
           define_method attribute do
             return if to_model.send(attribute).nil?
             template.time_ago_in_words to_model.send(attribute), include_seconds

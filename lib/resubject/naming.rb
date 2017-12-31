@@ -15,13 +15,13 @@ module Resubject
     # @return [Presenter] the related presenter class based on the object
     def self.presenter_for(presentable)
       klass = case presentable
-        when Symbol
-          presentable.to_s
-        when String
-          presentable
-        else
-          presentable.class.to_s
-        end
+              when Symbol
+                presentable.to_s
+              when String
+                presentable
+              else
+                presentable.class.to_s
+              end
 
       presenter = "#{klass.camelize}Presenter"
 

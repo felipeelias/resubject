@@ -20,14 +20,14 @@ describe Resubject::Presenter, 'template methods' do
   describe '.currency' do
     it 'returns currency format' do
       model.should_receive(:price).and_return(10.0)
-      expect(subject.price).to eq "$10.00"
+      expect(subject.price).to eq '$10.00'
     end
   end
 
   describe '.time_ago' do
     it 'returns time ago in words' do
       model.stub(:posted_at).and_return(Time.now - 60 * 60)
-      expect(subject.posted_at).to eq "about 1 hour"
+      expect(subject.posted_at).to eq 'about 1 hour'
     end
 
     it 'returns nothing if value is nil' do
@@ -39,14 +39,14 @@ describe Resubject::Presenter, 'template methods' do
   describe '.percentage' do
     it 'returns formatted percentage' do
       model.stub(:rating).and_return(95.123)
-      expect(subject.rating).to eq "95%"
+      expect(subject.rating).to eq '95%'
     end
   end
 
   describe '.date_format' do
     it 'returns formatted date' do
-      model.stub(:created_at).and_return(Time.at(1358082653).utc)
-      expect(subject.created_at).to eq "13 Jan 13:10"
+      model.stub(:created_at).and_return(Time.at(1_358_082_653).utc)
+      expect(subject.created_at).to eq '13 Jan 13:10'
     end
 
     it 'returns nothing if value is nil' do

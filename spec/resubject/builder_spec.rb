@@ -28,12 +28,12 @@ describe Resubject::Builder do
     it 'presents the object with multiple classes' do
       OtherBoxPresenter.should_receive(:new).twice
       presenters = [OtherBoxPresenter, OtherBoxPresenter]
-      presented  = Resubject::Builder.present_one Box.new, template, *presenters
+      Resubject::Builder.present_one Box.new, template, *presenters
     end
 
     it 'raises an error if custom presenter is not a presenter' do
       expect do
-        Resubject::Builder.present_one Box.new, template, *[nil, Class.new]
+        Resubject::Builder.present_one Box.new, template, nil, Class.new
       end.to raise_error(Resubject::Builder::InvalidPresenterArgument)
     end
   end

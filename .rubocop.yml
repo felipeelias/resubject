@@ -1,0 +1,28 @@
+Metrics/AbcSize:
+  Max: 20
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+    - 'test/**/*'
+
+Metrics/LineLength:
+  Max: 103
+
+Metrics/MethodLength:
+  Max: 15
+  Exclude:
+    - 'spec/**/*'
+    - 'test/**/*'
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/Documentation:
+  Exclude:
+    - 'spec/**/*'
+    - 'test/**/*'
+    - 'lib/resubject/builder.rb'
+    - 'lib/resubject/naming.rb'
+    - 'lib/resubject/presenter.rb'
+    - 'lib/resubject/rails.rb'

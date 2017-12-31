@@ -5,8 +5,8 @@ module Resubject
     extend Resubject::Extensions::TemplateMethods
 
     # the HTML helpers context
-    attr_reader  :context
-    alias_method :template, :context
+    attr_reader :context
+    alias template context
 
     # Create a new presenter
     #
@@ -23,7 +23,7 @@ module Resubject
       super(model)
     end
 
-    alias_method :to_model, :__getobj__
+    alias to_model __getobj__
 
     # Builds a collection of presenters given an array of objects
     #
@@ -84,24 +84,24 @@ module Resubject
       end
     end
 
-  private
+    private
 
     def translate(*args, &block)
       context.t(*args, &block)
     end
 
-    alias_method :t, :translate
+    alias t translate
 
     def localize(*args, &block)
       context.l(*args, &block)
     end
 
-    alias_method :l, :localize
+    alias l localize
 
     def helpers
       context
     end
 
-    alias_method :h, :helpers
+    alias h helpers
   end
 end
