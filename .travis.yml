@@ -2,8 +2,9 @@ language: ruby
 sudo: false
 cache: bundler
 rvm:
-  - 1.9.3
-  - 2.0.0
+  - 2.2.8
+  - 2.3.5
+  - 2.4.2
 env:
   - rails=3.2
   - rails=4.0
