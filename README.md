@@ -226,7 +226,7 @@ require 'resubject/rspec'
 require 'presenters/my_presenter'
 
 describe UserPresenter do
-  let(:object) { mock :user }
+  let(:object) { double :user }
 
   it 'has full name' do
     object.stub(first: 'User', last: 'Name')

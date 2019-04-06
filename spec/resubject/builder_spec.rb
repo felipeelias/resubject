@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Resubject::Builder do
-  let(:template) { stub }
+  let(:template) { double :template }
 
   before do
     stub_const 'Box', Class.new
@@ -26,7 +26,7 @@ describe Resubject::Builder do
     end
 
     it 'presents the object with multiple classes' do
-      OtherBoxPresenter.should_receive(:new).twice
+      expect(OtherBoxPresenter).to receive(:new).twice
       presenters = [OtherBoxPresenter, OtherBoxPresenter]
       Resubject::Builder.present_one Box.new, template, *presenters
     end

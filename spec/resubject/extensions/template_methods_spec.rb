@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'action_view'
 
 describe Resubject::Presenter, 'template methods' do
-  let(:model) { mock :model }
+  let(:model) { double :model }
 
   let(:presenter) do
     Class.new(Resubject::Presenter) do
@@ -19,38 +19,38 @@ describe Resubject::Presenter, 'template methods' do
 
   describe '.currency' do
     it 'returns currency format' do
-      model.should_receive(:price).and_return(10.0)
+      expect(model).to receive(:price).and_return(10.0)
       expect(subject.price).to eq '$10.00'
     end
   end
 
   describe '.time_ago' do
     it 'returns time ago in words' do
-      model.stub(:posted_at).and_return(Time.now - 60 * 60)
+      allow(model).to receive(:posted_at).and_return(Time.now - 60 * 60)
       expect(subject.posted_at).to eq 'about 1 hour'
     end
 
     it 'returns nothing if value is nil' do
-      model.stub(:posted_at).and_return(nil)
+      allow(model).to receive(:posted_at).and_return(nil)
       expect(subject.posted_at).to eq nil
     end
   end
 
   describe '.percentage' do
     it 'returns formatted percentage' do
-      model.stub(:rating).and_return(95.123)
+      allow(model).to receive(:rating).and_return(95.123)
       expect(subject.rating).to eq '95%'
     end
   end
 
   describe '.date_format' do
     it 'returns formatted date' do
-      model.stub(:created_at).and_return(Time.at(1_358_082_653).utc)
+      allow(model).to receive(:created_at).and_return(Time.at(1_358_082_653).utc)
       expect(subject.created_at).to eq '13 Jan 13:10'
     end
 
     it 'returns nothing if value is nil' do
-      model.stub(:created_at).and_return(nil)
+      allow(model).to receive(:created_at).and_return(nil)
       expect(subject.created_at).to eq nil
     end
   end

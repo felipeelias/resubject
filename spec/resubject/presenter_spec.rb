@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe Resubject::Presenter do
-  let(:object) { mock :object }
+  let(:object) { double :object }
 
   subject { Resubject::Presenter.new(object) }
 
   it 'delegate methods to object' do
-    object.should_receive(:pretty)
+    expect(object).to receive(:pretty)
     subject.pretty
   end
 
@@ -49,19 +49,19 @@ describe Resubject::Presenter do
     end
 
     it 'generates a method preseting the attribute' do
-      box = stub :box, item: Item.new
+      box = double :box, item: Item.new
 
       expect(presenter.new(box).item).to be_a ItemPresenter
     end
 
     it 'does not attempt to find a class from nil' do
-      box = stub :box, item: nil
+      box = double :box, item: nil
 
       expect(presenter.new(box).item).to be_nil
     end
 
     it 'presents the attributes with custom presenter' do
-      box = stub :box, other_item: stub
+      box = double :box, other_item: double(:other)
 
       expect(presenter.new(box).other_item).to be_a ItemPresenter
     end
