@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/felipeelias/resubject.svg?branch=master)](https://travis-ci.org/felipeelias/resubject)
 [![Gem Version](https://badge.fury.io/rb/resubject.svg)](https://badge.fury.io/rb/resubject)
 [![Code Climate](https://codeclimate.com/github/felipeelias/resubject/badges/gpa.svg)](https://codeclimate.com/github/felipeelias/resubject)
+[![security](https://hakiri.io/github/felipeelias/resubject/master.svg)](https://hakiri.io/github/felipeelias/resubject/master)
 
 Uber simple presenters using Ruby's SimpleDelegator.
 
