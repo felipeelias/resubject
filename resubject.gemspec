@@ -5,10 +5,10 @@ require_relative 'lib/resubject/version'
 Gem::Specification.new do |gem|
   gem.name          = 'resubject'
   gem.version       = Resubject::VERSION
-  gem.authors       = ['Felipe Elias Philipp', 'Piotr Jakubowski']
-  gem.email         = ['felipe@applicake.com', 'piotr.jakubowski@applicake.com']
-  gem.description   = 'Uber simple presenters'
-  gem.summary       = "Uber simple presenters using Ruby's SimpleDelegator"
+  gem.authors       = ['Felipe Philipp']
+  gem.email         = ['felipephilipp@duck.com']
+  gem.description   = "Simple presenters using Ruby's SimpleDelegator"
+  gem.summary       = "Simple presenters using Ruby's SimpleDelegator"
   gem.homepage      = 'https://github.com/felipeelias/resubject'
   gem.license       = 'MIT'
 
