@@ -1,0 +1,13 @@
+{
+  "bootstrap-sha": "af9fe51e997e9b355142b48d0283b942b2962114",
+  "packages": {
+    ".": {
+      "release-type": "ruby",
+      "package-name": "resubject",
+      "version-file": "lib/resubject/version.rb",
+      "changelog-path": "CHANGELOG.md",
+      "bump-minor-pre-major": true,
+      "bump-patch-for-minor-pre-major": true
+    }
+  }
+}
