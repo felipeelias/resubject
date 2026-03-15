@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'delegate'
 
 module Resubject
@@ -86,14 +88,14 @@ module Resubject
 
     private
 
-    def translate(*args, &block)
-      context.t(*args, &block)
+    def translate(...)
+      context.t(...)
     end
 
     alias t translate
 
-    def localize(*args, &block)
-      context.l(*args, &block)
+    def localize(...)
+      context.l(...)
     end
 
     alias l localize

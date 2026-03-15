@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Resubject
   module Builder
     # Raised when a invalid presenter is received

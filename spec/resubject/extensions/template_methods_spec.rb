@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
+require 'uri'
 require 'action_view'
 
 describe Resubject::Presenter, 'template methods' do
@@ -14,7 +17,7 @@ describe Resubject::Presenter, 'template methods' do
   end
 
   subject do
-    presenter.new(model, ActionView::Base.new)
+    presenter.new(model, ActionView::Base.empty)
   end
 
   describe '.currency' do
@@ -26,7 +29,7 @@ describe Resubject::Presenter, 'template methods' do
 
   describe '.time_ago' do
     it 'returns time ago in words' do
-      allow(model).to receive(:posted_at).and_return(Time.now - 60 * 60)
+      allow(model).to receive(:posted_at).and_return(Time.now - (60 * 60))
       expect(subject.posted_at).to eq 'about 1 hour'
     end
 

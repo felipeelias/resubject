@@ -1,12 +1,14 @@
-ENV['rails'] ||= '4'
+# frozen_string_literal: true
 
 source 'https://rubygems.org'
 
-rails_version = ENV['rails']
-gem 'actionpack', "~> #{rails_version}"
-
-gem 'nokogiri', '~> 1.8'
-gem 'redcarpet'
-gem 'rubocop'
-# Specify your gem's dependencies in resubject.gemspec
 gemspec
+
+rails_version = ENV.fetch('RAILS_VERSION', '7.2')
+gem 'actionpack', "~> #{rails_version}.0"
+
+gem 'rake', '>= 13.0'
+gem 'redcarpet'
+gem 'rspec', '~> 3.0'
+gem 'rubocop', '~> 1.0', require: false
+gem 'yard', '~> 0.9'

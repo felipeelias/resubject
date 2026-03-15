@@ -1,1 +1,3 @@
+# frozen_string_literal: true
+
 require 'resubject/extensions/template_methods'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'resubject/rails/engine'
 
 module Resubject

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'active_support/time'
 
 module Resubject
@@ -46,17 +48,11 @@ module Resubject
       #
       # @param [Symbol] attribute the name of the attribute to be generated
       # @see http://apidock.com/rails/ActionView/Helpers/DateHelper/time_ago_in_words
-      def time_ago(attribute, include_seconds = false)
-        if Gem::Version.new(ActiveSupport::VERSION::STRING) < Gem::Version.new('4')
-          define_method attribute do
-            return if to_model.send(attribute).nil?
-            template.time_ago_in_words to_model.send(attribute), include_seconds
-          end
-        else
-          define_method attribute do
-            return if to_model.send(attribute).nil?
-            template.time_ago_in_words to_model.send(attribute), include_seconds: include_seconds
-          end
+      def time_ago(attribute, include_seconds: false)
+        define_method attribute do
+          return if to_model.send(attribute).nil?
+
+          template.time_ago_in_words to_model.send(attribute), include_seconds: include_seconds
         end
       end
 
@@ -116,7 +112,8 @@ module Resubject
       def date_format(attribute, format = :default)
         define_method attribute do
           return if to_model.send(attribute).nil?
-          to_model.send(attribute).to_s(format)
+
+          to_model.send(attribute).to_fs(format)
         end
       end
     end

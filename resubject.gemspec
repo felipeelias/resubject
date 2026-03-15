@@ -1,6 +1,6 @@
-lib = File.expand_path('lib', __dir__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'resubject/version'
+# frozen_string_literal: true
+
+require_relative 'lib/resubject/version'
 
 Gem::Specification.new do |gem|
   gem.name          = 'resubject'
@@ -12,14 +12,17 @@ Gem::Specification.new do |gem|
   gem.homepage      = 'https://github.com/felipeelias/resubject'
   gem.license       = 'MIT'
 
-  gem.files         = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
-  gem.executables   = gem.files.grep(%r{^bin/}).map { |f| File.basename(f) }
-  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
+  gem.required_ruby_version = '>= 3.1'
+
+  gem.metadata['homepage_uri'] = gem.homepage
+  gem.metadata['source_code_uri'] = gem.homepage
+  gem.metadata['changelog_uri'] = "#{gem.homepage}/blob/master/CHANGELOG.md"
+  gem.metadata['rubygems_mfa_required'] = 'true'
+
+  gem.files = `git ls-files -z`.split("\x0").reject do |f|
+    f.match(%r{^(test|spec|features)/})
+  end
   gem.require_paths = ['lib']
 
-  gem.add_dependency 'activesupport', '>= 3.2'
-
-  gem.add_development_dependency 'rake', '~> 13.0'
-  gem.add_development_dependency 'rspec', '~> 3.0'
-  gem.add_development_dependency 'yard', '~> 0.9'
+  gem.add_dependency 'activesupport', '>= 7.0'
 end

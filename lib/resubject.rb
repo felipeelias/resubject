@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'resubject/version'
 require 'resubject/naming'
 require 'resubject/extensions'

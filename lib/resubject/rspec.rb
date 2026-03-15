@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'resubject'
 
 module Resubject
@@ -30,11 +32,7 @@ module Resubject
     def self.included(base)
       base.instance_eval do
         let(:template) do
-          if defined? ActionView
-            ActionView::Base.new
-          else
-            mock :template
-          end
+          defined?(ActionView) ? ActionView::Base.empty : double(:template)
         end
 
         subject do
@@ -45,14 +43,8 @@ module Resubject
   end
 end
 
-::RSpec.configure do |c|
-  if ::RSpec::Core::Version::STRING.split('.').first.to_i >= 3
-    c.include Resubject::Rspec,
-              type: :presenter,
-              file_path: %r{spec/presenters}
-  else
-    c.include Resubject::Rspec,
-              type: :presenter,
-              example_group: { file_path: %r{spec/presenters} }
-  end
+RSpec.configure do |c|
+  c.include Resubject::Rspec,
+            type: :presenter,
+            file_path: %r{spec/presenters}
 end

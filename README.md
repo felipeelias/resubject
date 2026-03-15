@@ -1,8 +1,7 @@
-# Resubject
+# [Resubject](https://github.com/felipeelias/resubject)
 
-[![Build Status](https://travis-ci.org/felipeelias/resubject.svg?branch=master)](https://travis-ci.org/felipeelias/resubject)
+[![CI](https://github.com/felipeelias/resubject/actions/workflows/ci.yml/badge.svg)](https://github.com/felipeelias/resubject/actions/workflows/ci.yml)
 [![Gem Version](https://badge.fury.io/rb/resubject.svg)](https://badge.fury.io/rb/resubject)
-[![Code Climate](https://codeclimate.com/github/felipeelias/resubject/badges/gpa.svg)](https://codeclimate.com/github/felipeelias/resubject)
 
 Uber simple presenters using Ruby's SimpleDelegator.
 
@@ -20,11 +19,7 @@ And then execute:
 
 ## Ruby/Rails versions
 
-This gem is compatible with Ruby 1.9 and 2.0 and Rails 3 and 4.
-
-## Documentation
-
-Checkout the documentation in [rdoc.info/resubject](http://rdoc.info/github/felipeelias/resubject/master/frames)
+This gem requires Ruby >= 3.1 and Rails >= 7.0.
 
 ## Introduction
 
@@ -238,11 +233,6 @@ end
 By placing the file into `spec/presenters`, Resubject automatically includes the `subject` and `template` variables into your spec, so you don't need to define them on every spec.
 
 **NOTE:** Please note that the presenter is tested on isolation. It's not required but very recommended.
-
-## Maintainers
-
-- Felipe Elias Philipp - [coderwall.com/felipeelias](http://coderwall.com/felipeelias)
-- Piotr Jakubowski - [coderwall.com/piotrj](http://coderwall.com/piotrj)
 
 ## Contributing
 
