@@ -35,7 +35,7 @@ module Resubject
     # @see .present_all
     #
     def self.present(objects, template, *presenters)
-      if objects.respond_to?(:each)
+      if objects.respond_to?(:to_ary)
         Builder.present_all(objects, template, *presenters)
       else
         Builder.present_one(objects, template, *presenters)

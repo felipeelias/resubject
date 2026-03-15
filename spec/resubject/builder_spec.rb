@@ -68,5 +68,61 @@ describe Resubject::Builder do
 
       expect(presented.map(&:class)).to eq [BoxPresenter, BoxPresenter]
     end
+
+    context 'with Struct objects' do
+      before do
+        stub_const 'MyStruct', Struct.new(:title, :description)
+        stub_const 'MyStructPresenter', Class.new(Resubject::Presenter)
+      end
+
+      it 'presents a Struct as a single object, not a collection' do
+        struct = MyStruct.new('hello', 'world')
+        presented = Resubject::Builder.present struct, template
+        expect(presented).to be_a MyStructPresenter
+      end
+
+      it 'presents an array of Structs as a collection' do
+        structs = [MyStruct.new('a', 'b'), MyStruct.new('c', 'd')]
+        presented = Resubject::Builder.present structs, template
+        expect(presented).to be_an Array
+        expect(presented.map(&:class)).to eq [MyStructPresenter, MyStructPresenter]
+      end
+
+      it 'presents a Struct with a custom presenter' do
+        struct = MyStruct.new('hello', 'world')
+        presented = Resubject::Builder.present struct, template, BoxPresenter
+        expect(presented).to be_a BoxPresenter
+      end
+    end
+
+    context 'with other Enumerable objects' do
+      before do
+        klass = Class.new do
+          include Enumerable
+
+          def each; end
+        end
+        stub_const 'EnumerableObj', klass
+        stub_const 'EnumerableObjPresenter', Class.new(Resubject::Presenter)
+      end
+
+      it 'presents an Enumerable object as a single object' do
+        obj = EnumerableObj.new
+        presented = Resubject::Builder.present obj, template
+        expect(presented).to be_a EnumerableObjPresenter
+      end
+    end
+
+    context 'with Hash objects' do
+      before do
+        stub_const 'HashPresenter', Class.new(Resubject::Presenter)
+      end
+
+      it 'presents a Hash as a single object' do
+        hash = { a: 1, b: 2 }
+        presented = Resubject::Builder.present hash, template, HashPresenter
+        expect(presented).to be_a HashPresenter
+      end
+    end
   end
 end
