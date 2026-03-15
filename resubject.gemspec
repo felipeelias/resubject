@@ -24,5 +24,5 @@ Gem::Specification.new do |gem|
   end
   gem.require_paths = ['lib']
 
-  gem.add_dependency 'activesupport', '>= 7.0'
+  gem.add_dependency 'activesupport', '>= 7.2'
 end

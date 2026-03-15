@@ -19,7 +19,7 @@ And then execute:
 
 ## Ruby/Rails versions
 
-This gem requires Ruby >= 3.1 and Rails >= 7.0.
+This gem requires Ruby >= 3.1 and Rails >= 7.2.
 
 ## Introduction
 

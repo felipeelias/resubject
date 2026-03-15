@@ -14,7 +14,7 @@ jobs:
       fail-fast: false
       matrix:
         ruby: ['3.2', '3.3', '3.4']
-        rails: ['7.1', '7.2', '8.0']
+        rails: ['7.2', '8.0']
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - uses: ruby/setup-ruby@dffb23f65a78bba8db45d387d5ea1bbd6be3ef18 # v1.293.0

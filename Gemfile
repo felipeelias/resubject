@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 gemspec
 
-rails_version = ENV.fetch('RAILS_VERSION', '7.2')
+rails_version = ENV.fetch('RAILS_VERSION', '8.0')
 gem 'actionpack', "~> #{rails_version}.0"
 
 gem 'rake', '>= 13.0'
