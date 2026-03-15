@@ -28,7 +28,7 @@ module Resubject
       presenter = "#{klass.camelize}Presenter"
 
       # Gets each constant in the namespace
-      presenter.split('::').inject(Object) { |ns, cons| ns.const_get(cons) }
+      presenter.split('::').inject(Object) { |ns, cons| ns.const_get(cons, false) }
     end
   end
 end
